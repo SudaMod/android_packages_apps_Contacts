@@ -30,7 +30,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v4 \
     libphonenumber \
     libgeocoding \
-    libSudaPinYin
+    libSudaPinYin \
+    libSudaLocation
 
 LOCAL_PACKAGE_NAME := Contacts
 LOCAL_CERTIFICATE := shared
