@@ -272,8 +272,6 @@ public class MultiPickContactActivity extends ListActivity implements
 
     private int MAX_CONTACTS_NUM_TO_SELECT_ONCE = 500;
 
-    private PhoneUtil mPu;
-
     //registerReceiver to update content when airplane mode change.
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -332,9 +330,6 @@ public class MultiPickContactActivity extends ListActivity implements
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         registerReceiver(mBroadcastReceiver, filter);
-
-        mPu = new PhoneUtil(this);
-
     }
 
     private void inflateSearchView() {
@@ -1342,7 +1337,7 @@ public class MultiPickContactActivity extends ListActivity implements
                 String callerName = cursor.getString(CALLLOG_COLUMN_CALLER_NAME);
                 int callerNumberType = cursor.getInt(CALLLOG_COLUMN_CALLER_NUMBERTYPE);
                 String callerNumberLabel = cursor.getString(CALLLOG_COLUMN_CALLER_NUMBERLABEL);
-                String geocodedLocation = mPu.getLocalNumberInfo(cache.number);
+                String geocodedLocation = PhoneUtil.getPhoneUtil(MultiPickContactActivity.this).getLocalNumberInfo(cache.number);
                 String accountId = cursor.getString(CALLLOG_COLUMN_PHONE_ACCOUNT);
                 long date = cursor.getLong(CALLLOG_COLUMN_DATE);
                 long duration = cursor.getLong(CALLLOG_COLUMN_DURATION);
