@@ -176,6 +176,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.a1os.cloud.phone.PhoneUtil;
+
+
 /**
  * Mostly translucent {@link Activity} that shows QuickContact dialog. It loads
  * data asynchronously, and then shows a popup with details centered around
@@ -1488,6 +1491,10 @@ public class QuickContactActivity extends ContactsActivity {
                 if (phone.hasKindTypeColumn(kind)) {
                     text = Phone.getTypeLabel(res, phone.getKindTypeColumn(kind),
                             phone.getLabel()).toString();
+                    String location = PhoneUtil.getPhoneUtil(context).getLocalNumberInfo(phone.getNumber());
+                    if (!TextUtils.isEmpty(location)) {
+                        text = text + " " + location;
+                    }
                     primaryContentDescription.append(text).append(" ");
                 }
                 primaryContentDescription.append(header);
