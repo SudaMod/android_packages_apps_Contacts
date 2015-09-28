@@ -1507,7 +1507,7 @@ public class QuickContactActivity extends ContactsActivity {
                 if (phone.hasKindTypeColumn(kind)) {
                     text = Phone.getTypeLabel(res, phone.getKindTypeColumn(kind),
                             phone.getLabel()).toString();
-                    String location = PhoneUtil.getPhoneUtil(context).getLocalNumberInfo(phone.getNumber());
+                    String location = PhoneUtil.getPhoneUtil(context).getLocalNumberInfo(phone.getNumber(), false);
                     if (!TextUtils.isEmpty(location)) {
                         text = text + " " + location;
                     }
